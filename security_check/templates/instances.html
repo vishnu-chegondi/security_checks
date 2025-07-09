@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block heading %}
+<h2 class="text-2xl leading-6 font-small text-gray-700">
+    IMDSv1 Using Instances
+</h2>
+{% endblock %}
+{% block content %}
+<table class="table-auto w-full mt-10 border-gray-200 rounded-sm shadow-lg border-collapse">
+    <thead class="h-15 p-2 bg-gray-50 rounded-sm">
+    <tr class="border-b border-gray-200 rounded-sm text-gray-600 text-sm bg-[#fff]">
+        <th >InstanceID</th>
+        <th >Instance Type</th>
+        <th >Instance State</th>
+        <th >Instance Launch Time</th>
+        <th >Instance Architecture</th>
+        <th >Instance VPC ID</th>
+        <th >Instance Subnet ID</th>
+        <th >Account ID</th>
+        <th> Web URL </th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for instance in instances %}
+    <tr class="border-b border-gray-200 text-center text-gray-500">
+        <td class="p-2">{{ instance["instance_id"] }}</td>
+        <td class="p-2">{{ instance["instance_type"] }}</td>
+        <td class="p-2">{{ instance["instance_state"] }}</td>
+        <td class="p-2">{{ instance["instance_launch_time"] }}</td>
+        <td class="p-2">{{ instance["instance_architecture"] }}</td>
+        <td class="p-2">{{ instance["instance_vpc_id"] }}</td>
+        <td class="p-2">{{ instance["instance_subnet_id"] }}</td>
+        <td class="p-2">{{ instance["instance_account_id"] }}</td>
+        <td class="p-2">
+            <a href={{ instance['web_url'] }} class="text-blue-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="size-5 inline">
+                <path fill-rule="evenodd" d="M18 10a8 8 0 1 1-16 0 8 8 0 0 1 16 0Zm-6.5 6.326a6.52 6.52 0 0 1-1.5.174 6.487 6.487 0 0 1-5.011-2.36l.49-.98a.423.423 0 0 1 .614-.164l.294.196a.992.992 0 0 0 1.491-1.139l-.197-.593a.252.252 0 0 1 .126-.304l1.973-.987a.938.938 0 0 0 .361-1.359.375.375 0 0 1 .239-.576l.125-.025A2.421 2.421 0 0 0 12.327 6.6l.05-.149a1 1 0 0 0-.242-1.023l-1.489-1.489a.5.5 0 0 1-.146-.353v-.067a6.5 6.5 0 0 1 5.392 9.23 1.398 1.398 0 0 0-.68-.244l-.566-.566a1.5 1.5 0 0 0-1.06-.439h-.172a1.5 1.5 0 0 0-1.06.44l-.593.592a.501.501 0 0 1-.13.093l-1.578.79a1 1 0 0 0-.553.894v.191a1 1 0 0 0 1 1h.5a.5.5 0 0 1 .5.5v.326Z" clip-rule="evenodd" />
+            </svg>
+
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
